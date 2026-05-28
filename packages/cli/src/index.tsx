@@ -7,6 +7,20 @@ import { KeyboardLayerProvider } from "./providers/keyboard-layer";
 import { DialogProvider } from "./providers/dialog";
 import { ThemeProvider, useTheme } from "./providers/theme";
 
+function App() {
+  return (
+    <ThemeProvider>
+      <KeyboardLayerProvider>
+        <DialogProvider>
+          <ToastProvider>
+            <ThemedRoot />
+          </ToastProvider>
+        </DialogProvider>
+      </KeyboardLayerProvider>
+    </ThemeProvider>
+  );
+}
+
 function ThemedRoot() {
   const { colors } = useTheme();
 
@@ -33,22 +47,9 @@ function ThemedRoot() {
   );
 }
 
-function App() {
-  return (
-    <ThemeProvider>
-      <KeyboardLayerProvider>
-        <DialogProvider>
-          <ToastProvider>
-            <ThemedRoot />
-          </ToastProvider>
-        </DialogProvider>
-      </KeyboardLayerProvider>
-    </ThemeProvider>
-  );
-}
-
 const renderer = await createCliRenderer({
   targetFps: 60,
   exitOnCtrlC: true,
 });
+
 createRoot(renderer).render(<App />);
