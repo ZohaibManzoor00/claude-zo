@@ -18,7 +18,8 @@ export const COMMANDS: Command[] = [
     description: "Start a new conversation",
     value: "/new",
     action: (ctx) => {
-      ctx.navigate("/");
+      ctx.toast.show({ message: "Opening new conversation..." });
+      // ctx.navigate("/");
     },
   },
   {
@@ -75,7 +76,7 @@ export const COMMANDS: Command[] = [
     description: "Sign in with your browser",
     value: "/login",
     action: async (ctx) => {
-    //   ctx.toast.show({ message: "Opening browser to sign in..." });
+      ctx.toast.show({ message: "Opening browser to sign in..." });
 
     //   try {
     //     await performLogin();
@@ -95,7 +96,7 @@ export const COMMANDS: Command[] = [
     value: "/logout",
     action: (ctx) => {
     //   clearAuth();
-    //   ctx.toast.show({ variant: "success", message: "Signed out" });
+      ctx.toast.show({ variant: "success", message: "Signed out" });
     },
   },
   {
@@ -103,7 +104,7 @@ export const COMMANDS: Command[] = [
     description: "Buy more credits",
     value: "/upgrade",
     action: async (ctx) => {
-    //   ctx.toast.show({ message: "Opening credits checkout..." });
+      ctx.toast.show({ message: "Opening credits checkout..." });
 
     //   try {
     //     await openUpgradeCheckout();
@@ -122,7 +123,7 @@ export const COMMANDS: Command[] = [
     description: "Open billing portal in your browser",
     value: "/usage",
     action: async (ctx) => {
-    //   ctx.toast.show({ message: "Opening billing portal..." });
+      ctx.toast.show({ message: "Opening billing portal..." });
 
     //   try {
     //     await openBillingPortal();
