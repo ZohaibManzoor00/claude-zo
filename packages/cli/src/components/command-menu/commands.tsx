@@ -1,10 +1,11 @@
 // import { SUPPORTED_CHAT_MODELS } from "@nightcode/shared";
-// import { 
+// import {
 //   AgentsDialogContent,
 //   ModelsDialogContent,
 //   SessionsDialogContent,
 //   ThemeDialogContent,
 // } from "../dialogs";
+import { ThemeDialogContent } from "../dialog/theme-dialog";
 import type { Command } from "./types";
 
 // import { performLogin } from "../../lib/oauth";
@@ -27,10 +28,14 @@ export const COMMANDS: Command[] = [
     description: "Switch agents",
     value: "/agents",
     action: (ctx) => {
-    //   ctx.dialog.open({
-    //     title: "Select Agent",
-    //     children: <AgentsDialogContent currentMode={ctx.mode} onSelectMode={ctx.setMode} />,
-    //   })
+      ctx.dialog.open({
+        title: "Select Agent",
+        children: <text>Select Agent</text>,
+      });
+      // ctx.dialog.open({
+      //   title: "Select Agent",
+      //   children: <AgentsDialogContent currentMode={ctx.mode} onSelectMode={ctx.setMode} />,
+      // })
     },
   },
   {
@@ -38,15 +43,15 @@ export const COMMANDS: Command[] = [
     description: "Select AI model for generation",
     value: "/models",
     action: (ctx) => {
-    //   ctx.dialog.open({
-    //     title: "Select Model",
-    //     children: (
-    //       <ModelsDialogContent
-    //         models={SUPPORTED_CHAT_MODELS.map((model) => model.id)}
-    //         onSelectModel={ctx.setModel}
-    //       />
-    //     ),
-    //   })
+      //   ctx.dialog.open({
+      //     title: "Select Model",
+      //     children: (
+      //       <ModelsDialogContent
+      //         models={SUPPORTED_CHAT_MODELS.map((model) => model.id)}
+      //         onSelectModel={ctx.setModel}
+      //       />
+      //     ),
+      //   })
     },
   },
   {
@@ -54,10 +59,10 @@ export const COMMANDS: Command[] = [
     description: "Browse past sessions",
     value: "/sessions",
     action: (ctx) => {
-    //   ctx.dialog.open({
-    //     title: "Sessions",
-    //     children: <SessionsDialogContent />,
-    //   })
+      //   ctx.dialog.open({
+      //     title: "Sessions",
+      //     children: <SessionsDialogContent />,
+      //   })
     },
   },
   {
@@ -65,10 +70,10 @@ export const COMMANDS: Command[] = [
     description: "Change color theme",
     value: "/theme",
     action: (ctx) => {
-    //   ctx.dialog.open({
-    //     title: "Select Theme",
-    //     children: <ThemeDialogContent />,
-    //   })
+      ctx.dialog.open({
+        title: "Select Theme",
+        children: <ThemeDialogContent />,
+      });
     },
   },
   {
@@ -78,16 +83,16 @@ export const COMMANDS: Command[] = [
     action: async (ctx) => {
       ctx.toast.show({ message: "Opening browser to sign in..." });
 
-    //   try {
-    //     await performLogin();
-    //     ctx.toast.show({ variant: "success", message: "Signed in" });
-    //   } catch (error) {
-    //     const message = error instanceof Error 
-    //       ? error.message 
-    //       : "Sign in failed or timed out";
+      //   try {
+      //     await performLogin();
+      //     ctx.toast.show({ variant: "success", message: "Signed in" });
+      //   } catch (error) {
+      //     const message = error instanceof Error
+      //       ? error.message
+      //       : "Sign in failed or timed out";
 
-    //     ctx.toast.show({ variant: "error", message });
-    //   }
+      //     ctx.toast.show({ variant: "error", message });
+      //   }
     },
   },
   {
@@ -95,7 +100,7 @@ export const COMMANDS: Command[] = [
     description: "Sign out of your account",
     value: "/logout",
     action: (ctx) => {
-    //   clearAuth();
+      //   clearAuth();
       ctx.toast.show({ variant: "success", message: "Signed out" });
     },
   },
@@ -106,16 +111,16 @@ export const COMMANDS: Command[] = [
     action: async (ctx) => {
       ctx.toast.show({ message: "Opening credits checkout..." });
 
-    //   try {
-    //     await openUpgradeCheckout();
-    //     ctx.toast.show({
-    //       variant: "success",
-    //       message: "Checkout opened in browser",
-    //     });
-    //   } catch (error) {
-    //     const message = error instanceof Error ? error.message : "Failed to open checkout";
-    //     ctx.toast.show({ variant: "error", message });
-    //   }
+      //   try {
+      //     await openUpgradeCheckout();
+      //     ctx.toast.show({
+      //       variant: "success",
+      //       message: "Checkout opened in browser",
+      //     });
+      //   } catch (error) {
+      //     const message = error instanceof Error ? error.message : "Failed to open checkout";
+      //     ctx.toast.show({ variant: "error", message });
+      //   }
     },
   },
   {
@@ -125,16 +130,16 @@ export const COMMANDS: Command[] = [
     action: async (ctx) => {
       ctx.toast.show({ message: "Opening billing portal..." });
 
-    //   try {
-    //     await openBillingPortal();
-    //     ctx.toast.show({
-    //       variant: "success",
-    //       message: "Billing portal opened in browser",
-    //     });
-    //   } catch (error) {
-    //     const message = error instanceof Error ? error.message : "Failed to open billing portal";
-    //     ctx.toast.show({ variant: "error", message });
-    //   }
+      //   try {
+      //     await openBillingPortal();
+      //     ctx.toast.show({
+      //       variant: "success",
+      //       message: "Billing portal opened in browser",
+      //     });
+      //   } catch (error) {
+      //     const message = error instanceof Error ? error.message : "Failed to open billing portal";
+      //     ctx.toast.show({ variant: "error", message });
+      //   }
     },
   },
   {

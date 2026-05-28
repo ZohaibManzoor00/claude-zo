@@ -1,11 +1,11 @@
 import { TextAttributes } from "@opentui/core";
-// import { useTheme } from "../providers/theme";
+import { useTheme } from "../providers/theme";
 // import { usePromptConfig } from "../providers/prompt-config";
 // import { Mode } from "@nightcode/shared";
 
 export function StatusBar() {
   //   const { mode, model } = usePromptConfig();
-  //   const { colors } = useTheme();
+  const { colors } = useTheme();
 
   return (
     <box flexDirection="row" gap={1}>
@@ -13,7 +13,7 @@ export function StatusBar() {
         {mode === Mode.PLAN ? "Plan" : "Build"}
       </text> */}
 
-      <text fg="cyan">Build</text>
+      <text fg={colors.primary}>Build</text>
       <text attributes={TextAttributes.DIM} fg="gray">
         ›
       </text>

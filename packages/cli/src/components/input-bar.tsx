@@ -1,5 +1,5 @@
 import type { KeyBinding, TextareaRenderable } from "@opentui/core";
-import { EmptyBorder, SplitBorderChars } from "./border";
+import { EmptyBorder } from "./border";
 import { StatusBar } from "./status-bar";
 import { CommandMenu } from "./command-menu";
 import { useCallback, useEffect, useRef } from "react";
@@ -8,6 +8,8 @@ import { useCommandMenu } from "./command-menu/use-command-menu";
 import type { Command } from "./command-menu/types";
 import { useToast } from "../providers/toast";
 import { useKeyboardLayer } from "../providers/keyboard-layer";
+import { useDialog } from "../providers/dialog";
+import { useTheme } from "../providers/theme";
 
 type Props = {
   onSubmit: (value: string) => void;
@@ -26,7 +28,9 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
   const onSubmitRef = useRef<() => void>(() => {});
   const renderer = useRenderer();
   const toast = useToast();
+  const dialog = useDialog();
   const { setResponder, isTopLayer } = useKeyboardLayer();
+  const { colors } = useTheme();
   const { showCommandMenu, commandQuery, selectedIndex, scrollRef, resolveCommand, setSelectedIndex, handleContentChange } =
     useCommandMenu();
 
@@ -37,7 +41,7 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
 
       textarea.setText("");
 
-      if (command.action) command.action({ exit: () => renderer.destroy(), toast });
+      if (command.action) command.action({ exit: () => renderer.destroy(), toast, dialog });
       else textarea.insertText(command.value + " ");
     },
     [renderer],
@@ -110,7 +114,7 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
     <box width="100%" alignItems="center">
       <box
         border={["left"]}
-        borderColor="cyan"
+        borderColor={colors.primary}
         customBorderChars={{
           ...EmptyBorder,
           vertical: "┃",
